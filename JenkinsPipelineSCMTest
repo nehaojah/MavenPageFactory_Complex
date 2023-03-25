@@ -1,0 +1,20 @@
+pipeline{
+	agent any
+
+	tools{
+	maven "MAVEN_HOME"
+	}
+	
+	stages{
+	stage('Preparation'){
+	steps{
+	git branch: 'master', url: 'https://github.com/nehaojah/MavenPageFactory_Complex.git'
+	}
+	}
+	stage('Build'){
+	steps{
+	bat "mvn clean test"
+	}
+           }
+        }
+}
